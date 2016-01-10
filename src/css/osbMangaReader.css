@@ -17,6 +17,21 @@ osb-manga-reader .credits {
   osb-manga-reader .credits small {
     font-style: italic; }
 
+osb-manga-reader .btn-primary {
+  background-color: #0285E3;
+  background-image: none;
+  box-shadow: 0 2px 0 0 rgba(0, 42, 71, 0.7);
+  border: 0; }
+  osb-manga-reader .btn-primary:hover {
+    background-color: #0065AD; }
+  osb-manga-reader .btn-primary:active, osb-manga-reader .btn-primary.active {
+    background-color: #0065AD;
+    box-shadow: none;
+    margin-bottom: -2px;
+    margin-top: 2px; }
+  osb-manga-reader .btn-primary:focus {
+    outline: none; }
+
 osb-manga-reader .mangaList {
   height: 500px;
   min-height: 500px; }
