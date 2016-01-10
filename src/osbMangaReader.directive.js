@@ -3,7 +3,7 @@
 angular.module('sistem3.osb-manga-reader', ['osb-manga-reader-template'])
   .directive('osbMangaReader', ['$http', '$timeout', 'localStorageService', function ($http, $timeout, localStorageService) {
     return {
-      templateUrl: 'app/osbMangaReader/osbMangaReader.html',
+      templateUrl: 'osbMangaReader.tpl.html',
       restrict: 'EA',
       link: function ($scope, $element) {
         console.log('Adding Manga Reader');
