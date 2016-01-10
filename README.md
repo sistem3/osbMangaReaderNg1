@@ -1,16 +1,11 @@
-osbGeoWeather (Ng 1.4)
+osbMangaReader (Ng 1.4)
 ============
 
-**Version:** 0.1.1
+**Version:** 0.0.1
 
-**Description:** This is an Angular JS (1.4) Directive for displaying local weather
-based on geolocation. The geolocation is done through Google Maps API and the
-weather forecast currently comes from [Open Weather Map API][1], it also
-utilises [Weather Icons][2].
+**Description:** This is an Angular JS (1.4) Directive for displaying Manga content from MangaReader.net.
 
 [1]: <http://openweathermap.org/>
-
-[2]: <https://github.com/erikflowers/weather-icons>
 
 **Dependencies:**
 
