@@ -338,8 +338,8 @@ angular.module('sistem3.osb-manga-reader', ['osb-manga-reader-template'])
         // Init Slider
         $scope.osbMangaReader.functions.initSlider = function() {
           $timeout(function(){
-            $scope.osbMangaReader.mangaView = new Swiper($element.find('.swiper-container'), $scope.osbMangaReader.settings.viewer.sliderParams);
-          }, 250);
+            $scope.osbMangaReader.mangaView = new Swiper(document.querySelector('osb-manga-reader .swiper-container'), $scope.osbMangaReader.settings.viewer.sliderParams);
+          }, 500);
         };
         // Get Manga Chapter
         $scope.osbMangaReader.functions.getMangaChapter = function(title, chapter, page) {
