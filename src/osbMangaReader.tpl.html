@@ -1,0 +1,143 @@
+<section class="container">
+  <!-- Main Nav Starts -->
+  <div class="row">
+    <nav class="col-md-12 main-nav">
+      <ul class="list-unstyled list-inline col-md-7">
+        <!--<li ng-hide="osbMangaReader.settings.hideMenu">
+          <button class="btn btn-primary"><i class="fa fa-sign-in"></i></button>
+        </li>-->
+        <li ng-hide="osbMangaReader.settings.hideMenu">
+          <button class="btn btn-primary" ng-click="osbMangaReader.functions.getSiteMangaList()">Site Favourites <i class="fa fa-diamond"></i></button>
+        </li>
+        <li ng-hide="osbMangaReader.settings.hideMenu">
+          <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaList()">All Titles <i class="fa fa-list"></i></button>
+        </li>
+        <li ng-hide="osbMangaReader.settings.hideMenu">
+          <input class="form-control" type="text" ng-model="searchTerm" placeholder="Search titles...">
+        </li>
+        <li ng-hide="osbMangaReader.settings.hideMenu">
+          <button class="btn btn-primary" ng-click="osbMangaReader.functions.searchMangaTitles(searchTerm)"><i class="fa fa-search"></i></button>
+        </li>
+        <li>
+          <button class="btn btn-primary" ng-click="osbMangaReader.settings.hideMenu = !osbMangaReader.settings.hideMenu"><i class="fa fa-chevron-left" ng-class="{'fa-chevron-left': !osbMangaReader.settings.hideMenu, 'fa-chevron-right': osbMangaReader.settings.hideMenu}"></i></button>
+        </li>
+      </ul>
+      <div class="col-md-5">
+        <ul class="list-unstyled list-inline pull-right" ng-if="osbMangaReader.settings.defaultView == 'manga-viewer'">
+          <li>Chapter: <span ng-bind="osbMangaReader.settings.viewer.chapterNumber"></span> | Page: <span ng-bind="osbMangaReader.settings.viewer.pageNumber"></span>/<span ng-bind="osbMangaReader.settings.viewer.totalPageNumber"></span></li>
+          <li>
+            <button class="btn btn-primary bookmark" ng-click="osbMangaReader.functions.setBookmark()"><i class="fa fa-bookmark-o"></i></button>
+          </li>
+          <li ng-show="osbMangaReader.settings.viewer.bookmarkActive">
+            <button class="btn btn-primary" ng-hide="osbMangaReader.settings.viewer.noLessBookmarks" ng-click="osbMangaReader.functions.goToPrevBookMark()"><i class="fa fa-chevron-left"></i></button>
+            <button class="btn btn-primary" ng-hide="osbMangaReader.settings.viewer.noMoreBookmarks" ng-click="osbMangaReader.functions.goToBookMark()"><i class="fa fa-chevron-right"></i></button>
+          </li>
+          <!--<li ng-show="osbMangaReader.settings.viewer.showTools"><button class="btn btn-primary magnify"><i class="fa fa-search-plus"></i></button></li>
+          <li ng-show="osbMangaReader.settings.viewer.showTools"><button class="btn btn-primary two-up"><i class="fa fa-columns"></i></button></li>
+          <li ng-show="osbMangaReader.settings.viewer.showTools"><button class="btn btn-primary full-screen"><i class="fa fa-expand"></i></button></li>
+          <li><button class="btn btn-primary full-screen" ng-click="osbMangaReader.settings.viewer.showTools = !osbMangaReader.settings.viewer.showTools"><i class="fa fa-cogs"></i></button></li>-->
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Main Nav Ends -->
+  <!-- Credits Starts -->
+  <div class="row credits" ng-class="{'visible': !osbMangaReader.settings.hideMenu, 'invisible': osbMangaReader.settings.hideMenu}">
+    <div class="col-md-6"><small>Powered by MangaScraper API and MangaReader.net</small></div>
+  </div>
+  <!-- Credits Ends -->
+  <!-- Manga List Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-list'" class="mangaList">
+    <div infinite-scroll="osbMangaReader.functions.showMoreManga()" infinite-scroll-disabled="osbMangaReader.settings.mangaListLoading" infinite-scroll-distance="2">
+      <ul class="list-unstyled">
+        <li ng-repeat="manga in osbMangaReader.settings.mangaList | limitTo: osbMangaReader.settings.mangaListAmount" class="row mangaTitle">
+          <article class="container-fluid">
+            <div class="col-md-2 col-sm-4 col-xs-12 mainImage"><img ng-src="{{manga.cover}}" class="img-responsive center-block" /></div>
+            <div class="col-md-10 col-sm-8 col-xs-12">
+              <h2 ng-bind="manga.name"></h2>
+              <p ng-bind-html="manga.info"></p>
+              <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaTitle(manga.mangaId)">View Manga Info <i class="fa fa-info-circle"></i></button>
+              <button class="btn btn-primary">Add to favourites <i class="fa fa-heart-o"></i></button>
+              <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaChapter(manga.mangaId, 1)">Start Reading <i class="fa fa-book"></i></button>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- Manga List Ends -->
+  <!-- Manga Site Picks Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-site-picks'" class="mangaList">
+    <ul class="list-unstyled">
+      <li ng-repeat="manga in osbMangaReader.settings.mangaSitePicksList" class="row mangaTitle">
+        <article class="container-fluid">
+          <div class="col-md-2 col-sm-4 col-xs-12 mainImage"><img ng-src="{{manga.cover}}" class="img-responsive center-block" /></div>
+          <div class="col-md-10 col-sm-8 col-xs-12">
+            <h2 ng-bind="manga.name"></h2>
+            <p ng-bind-html="manga.info"></p>
+            <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaTitle(manga.mangaId)">View Manga Info <i class="fa fa-info-circle"></i></button>
+            <button class="btn btn-primary" ng-click="osbMangaReader.functions.setFavourite(manga.mangaId)">Add to favourites <i class="fa fa-heart-o"></i></button>
+            <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaChapter(manga.mangaId, 1)">Start Reading <i class="fa fa-book"></i></button>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
+  <!-- Manga Site Picks Ends -->
+  <!-- Manga Title Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-title'" class="mangaTitle">
+    <article>
+      <div class="col-md-3 mainImage">
+        <img ng-src="{{osbMangaReader.settings.mangaTitle.cover}}" class="img-responsive">
+      </div>
+      <div class="col-md-9">
+        <h2 ng-bind="osbMangaReader.settings.mangaTitle.name"></h2>
+        <nav class="form-inline">
+          <label for="chapterSelect">Chapter: </label>
+          <select id="chapterSelect" class="form-control" ng-model="osbMangaReader.settings.mangaTitle.chapter" ng-options="item.name for item in osbMangaReader.settings.mangaTitle.chapters"></select>
+          <button class="btn btn-primary"><i class="fa fa-chevron-right"></i></button>
+        </nav>
+        <p ng-bind-html="osbMangaReader.settings.mangaTitle.info"></p>
+        <p>Date released: <span ng-bind="osbMangaReader.settings.mangaTitle.yearOfRelease"></span></p>
+        <!--<p>Last Updated: <span ng-bind="osbMangaReader.settings.mangaTitle.yearOfRelease | date: 'mediumDate'"></span></p>-->
+        <p>Status: <span ng-bind="osbMangaReader.settings.mangaTitle.status"></span></p>
+        <!--<p>Author: <span ng-repeat="authors in osbMangaReader.settings.mangaTitle"><span ng-bind="author.key"></span></span></p>-->
+      </div>
+    </article>
+  </section>
+  <!-- Manga Title Ends -->
+  <!-- Manga Viewer Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-viewer'">
+    <article class="mangaViewer swiper-container">
+      <div class="swiper-wrapper">
+        <div ng-repeat="page in osbMangaReader.settings.mangaChapter.pages" class="swiper-slide mangaPage">
+          <img ng-src="{{page.url}}" />
+        </div>
+      </div>
+    </article>
+  </section>
+  <!-- Manga Viewer Ends -->
+  <!-- Manga Search Results Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-results'">
+    <ul class="list-unstyled">
+      <li ng-repeat="item in osbMangaReader.settings.searchResults" class="row mangaTitle">
+        <article class="container-fluid">
+          <div class="col-md-2 col-sm-4 col-xs-12"><img ng-src="{{item.cover}}" class="img-responsive" /></div>
+          <div class="col-md-10 col-sm-8 col-xs-12">
+            <h2 ng-bind="item.name"></h2>
+            <p ng-bind-html="item.info"></p>
+            <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaTitle(manga.mangaId)">View Manga Info <i class="fa fa-info-circle"></i></button>
+            <button class="btn btn-primary">Add to favourites <i class="fa fa-heart-o"></i></button>
+            <button class="btn btn-primary" ng-click="osbMangaReader.functions.getMangaChapter(manga.mangaId, 1)">Start Reading <i class="fa fa-book"></i></button>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
+  <!-- Manga Search Results Ends -->
+  <!-- Manga Loading Icon Starts -->
+  <section ng-if="osbMangaReader.settings.defaultView == 'manga-loading'" class="mangaLoader">
+    <i class="fa fa-spinner fa-spin"></i>
+  </section>
+  <!-- Manga Loading Icon Ends -->
+</section>

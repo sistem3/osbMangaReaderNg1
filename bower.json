@@ -1,0 +1,36 @@
+{
+  "name": "osb-manga-reader-ng",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": ">=1.2.*",
+    "angular-sanitize": "~1.4.8",
+    "weather-icons": "~2.0.10",
+    "bootstrap-sass-official": "~3.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-resource": ">=1.2.*",
+    "font-awesome": ">=4.1.0",
+    "angular-local-storage": "~0.2.3"
+  },
+  "authors": [
+    "Ben Burton <sistematic3@yahoo.co.uk>"
+  ],
+  "description": "Angular JS Directive for displaying manga content",
+  "main": [
+    "./dist/osbMangaReader.js",
+    "./dist/osbMangaReader.css",
+    "./dist/font/*"
+  ],
+  "keywords": [
+    "angularJS",
+    "weather"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".gitignore",
+    "Gruntfile.js",
+    "*.json",
+    "*.md",
+    "/src/*",
+    "/node_modules/*"
+  ]
+}
