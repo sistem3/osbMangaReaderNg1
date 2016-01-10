@@ -9,7 +9,8 @@
     "bootstrap": "~3.1.1",
     "angular-resource": ">=1.2.*",
     "font-awesome": ">=4.1.0",
-    "angular-local-storage": "~0.2.3"
+    "angular-local-storage": "~0.2.3",
+    "Swiper": "swiper#~3.3.0"
   },
   "authors": [
     "Ben Burton <sistematic3@yahoo.co.uk>"
