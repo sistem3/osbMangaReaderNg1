@@ -5,7 +5,7 @@ angular.module('sistem3.osb-manga-reader', ['osb-manga-reader-template'])
     return {
       templateUrl: 'osbMangaReader.tpl.html',
       restrict: 'EA',
-      link: function ($scope, $element) {
+      link: function ($scope, element) {
         console.log('Adding Manga Reader');
         /*-- Init object --*/
         $scope.osbMangaReader = {};
@@ -338,6 +338,9 @@ angular.module('sistem3.osb-manga-reader', ['osb-manga-reader-template'])
         // Init Slider
         $scope.osbMangaReader.functions.initSlider = function() {
           $timeout(function(){
+            var viewportSize = window.innerHeight - 90;
+            console.log(viewportSize);
+            document.querySelector('osb-manga-reader .swiper-container').setAttribute('style','height:' + viewportSize + 'px;');
             $scope.osbMangaReader.mangaView = new Swiper(document.querySelector('osb-manga-reader .swiper-container'), $scope.osbMangaReader.settings.viewer.sliderParams);
           }, 500);
         };
