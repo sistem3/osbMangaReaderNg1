@@ -7,9 +7,6 @@ angular.module("osbMangaReader.tpl.html", []).run(["$templateCache", function($t
     "  <div class=\"row\">\n" +
     "    <nav class=\"col-md-12 main-nav\">\n" +
     "      <ul class=\"list-unstyled list-inline col-md-7\">\n" +
-    "        <!--<li ng-hide=\"osbMangaReader.settings.hideMenu\">\n" +
-    "          <button class=\"btn btn-primary\"><i class=\"fa fa-sign-in\"></i></button>\n" +
-    "        </li>-->\n" +
     "        <li ng-hide=\"osbMangaReader.settings.hideMenu\">\n" +
     "          <button class=\"btn btn-primary\" ng-click=\"osbMangaReader.functions.getSiteMangaList()\">Site Favourites <i class=\"fa fa-diamond\"></i></button>\n" +
     "        </li>\n" +
@@ -36,10 +33,6 @@ angular.module("osbMangaReader.tpl.html", []).run(["$templateCache", function($t
     "            <button class=\"btn btn-primary\" ng-hide=\"osbMangaReader.settings.viewer.noLessBookmarks\" ng-click=\"osbMangaReader.functions.goToPrevBookMark()\"><i class=\"fa fa-chevron-left\"></i></button>\n" +
     "            <button class=\"btn btn-primary\" ng-hide=\"osbMangaReader.settings.viewer.noMoreBookmarks\" ng-click=\"osbMangaReader.functions.goToBookMark()\"><i class=\"fa fa-chevron-right\"></i></button>\n" +
     "          </li>\n" +
-    "          <!--<li ng-show=\"osbMangaReader.settings.viewer.showTools\"><button class=\"btn btn-primary magnify\"><i class=\"fa fa-search-plus\"></i></button></li>\n" +
-    "          <li ng-show=\"osbMangaReader.settings.viewer.showTools\"><button class=\"btn btn-primary two-up\"><i class=\"fa fa-columns\"></i></button></li>\n" +
-    "          <li ng-show=\"osbMangaReader.settings.viewer.showTools\"><button class=\"btn btn-primary full-screen\"><i class=\"fa fa-expand\"></i></button></li>\n" +
-    "          <li><button class=\"btn btn-primary full-screen\" ng-click=\"osbMangaReader.settings.viewer.showTools = !osbMangaReader.settings.viewer.showTools\"><i class=\"fa fa-cogs\"></i></button></li>-->\n" +
     "        </ul>\n" +
     "      </div>\n" +
     "    </nav>\n" +
